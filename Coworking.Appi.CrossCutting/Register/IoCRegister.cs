@@ -13,6 +13,7 @@ namespace Coworking.Appi.CrossCutting.Register
     {
         public static IServiceCollection AddRegistration(this IServiceCollection services)
         {
+            AddRegisterServices(services);
             AddRegisterRepositories(services);
             return services;
         }
