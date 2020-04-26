@@ -4,4 +4,15 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Coworking.Api.DataAccess\Coworking.Api.DataAccess.csproj" />
+    <ProjectReference Include="..\Coworking.Appi.Application.Contracts\Coworking.Appi.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Coworking.Appi.Application\Coworking.Appi.Application.csproj" />
+    <ProjectReference Include="..\Coworking.Appi.DataAccess.Contracts\Coworking.Appi.DataAccess.Contracts.csproj" />
+  </ItemGroup>
+
 </Project>

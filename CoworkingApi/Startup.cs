@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Coworking.Api.DataAccess;
+using Coworking.Appi.CrossCutting.Register;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +30,8 @@ namespace CoworkingApi
         {
             services.AddDbContext<CoworkingDBContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("DataBaseConnection")));
             services.AddControllers();
+
+            IoCRegister.AddRegistration(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

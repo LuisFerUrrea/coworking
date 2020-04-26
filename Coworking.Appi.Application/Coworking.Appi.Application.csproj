@@ -6,7 +6,13 @@
 
   <ItemGroup>
     <Folder Include="Mappers\" />
-    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Coworking.Api.DataAccess\Coworking.Api.DataAccess.csproj" />
+    <ProjectReference Include="..\Coworking.Appi.Application.Contracts\Coworking.Appi.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Coworking.Appi.Business\Coworking.Appi.Business.csproj" />
+    <ProjectReference Include="..\Coworking.Appi.DataAccess.Contracts\Coworking.Appi.DataAccess.Contracts.csproj" />
   </ItemGroup>
 
 </Project>
