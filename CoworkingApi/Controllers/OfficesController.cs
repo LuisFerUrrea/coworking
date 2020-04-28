@@ -14,11 +14,11 @@ namespace CoworkingApi.Controllers
     [Route("[controller]")]
     public class OfficesController : ControllerBase
     {
-        private readonly IOfficeService _officeService;
+        private readonly IOfficesService _officesService;
 
-        public OfficesController(IOfficeService officeService)
+        public OfficesController(IOfficesService officesService)
         {
-            officeService = _officeService;
+            officesService = _officesService;
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace CoworkingApi.Controllers
         [Produces("application/json", Type = typeof(OfficeModel))]
         public async Task<IActionResult> Get(int id)
         {
-            var admin = await _officeService.GetOffice(id);
+            var admin = await _officesService.GetOffice(id);
 
             return Ok(admin);
         }
@@ -43,7 +43,7 @@ namespace CoworkingApi.Controllers
         [Produces("application/json", Type = typeof(List<AdminModel>))]
         public async Task<IActionResult> GetAll()
         {
-            var admin = await _officeService.GetAllOffices();
+            var admin = await _officesService.GetAllOffices();
 
             return Ok(admin);
         }
@@ -60,7 +60,7 @@ namespace CoworkingApi.Controllers
         [HttpPost]
         public async Task<IActionResult> AddOffice([FromBody]OfficeModel office)
         {
-            var name = await _officeService.AddOffice(OfficeMapper.Map(office));
+            var name = await _officesService.AddOffice(OfficeMapper.Map(office));
 
             return Ok(name);
         }
@@ -74,7 +74,7 @@ namespace CoworkingApi.Controllers
         [Produces("application/json", Type = typeof(bool))]
         public async Task<IActionResult> DeleteAdmin(int id)
         {
-            await _officeService.DeleteOffice(id);
+            await _officesService.DeleteOffice(id);
 
             return Ok();
         }
@@ -88,7 +88,7 @@ namespace CoworkingApi.Controllers
         [Produces("application/json", Type = typeof(OfficeModel))]
         public async Task<IActionResult> UpdateAdmin([FromBody]OfficeModel office)
         {
-            var name = await _officeService.UpdateOffice(OfficeMapper.Map(office));
+            var name = await _officesService.UpdateOffice(OfficeMapper.Map(office));
 
             return Ok(name);
         }

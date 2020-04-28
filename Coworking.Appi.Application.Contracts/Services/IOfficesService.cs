@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Coworking.Appi.Application.Contracts.Services
 {
-    public interface IOfficeService
+    public interface IOfficesService
     {
         Task<Office> AddOffice(Office office);
         Task<IEnumerable<Office>> GetAllOffices();

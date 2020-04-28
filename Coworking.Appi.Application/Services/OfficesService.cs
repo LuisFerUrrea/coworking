@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Coworking.Appi.Application.Services
 {
-    public class OfficesService : IOfficeService
+    public class OfficesService : IOfficesService
     {
 
         private readonly IOfficeRepository _officeRepository;
