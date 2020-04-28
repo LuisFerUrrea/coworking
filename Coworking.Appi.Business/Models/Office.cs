@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Coworking.Appi.DataAccess.Contracts.Entities
+namespace Coworking.Appi.Business.Models
 {
-    public class OfficeEntity
+    public class Office
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -12,22 +12,11 @@ namespace Coworking.Appi.DataAccess.Contracts.Entities
         public string Phone { get; set; }
         public string City { get; set; }
         public bool Active { get; set; }
-
         public int? AdminId { get; set; }
-
         public bool HasIndividualWorkSpace { get; set; }
-
         public int NumberWorkSpaces { get; set; }
-
         public float PriceWorkSpaceDaily { get; set; }
-
         public float PriceWorkSpaceMonthly { get; set; }
-
-        public virtual AdminEntity Admin { get; set; }
-
-        public virtual ICollection<BookingEntity> Booking { get; set; }
-
-        public virtual ICollection<Officces2RoomsEntity> Office2Room { get; set; }
-
+    
     }
 }

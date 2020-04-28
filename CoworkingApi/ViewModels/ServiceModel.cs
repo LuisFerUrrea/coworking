@@ -1,20 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Coworking.Appi.DataAccess.Contracts.Entities
+namespace CoworkingApi.ViewModels
 {
-    public class ServiceEntity
+    public class ServiceModel
     {
         public int Id { get; set; }
-
         public string Name { get; set; }
-
         public bool Active { get; set; }
-
         public float Price { get; set; }
-
-        public virtual ICollection<Room2ServicesEntity> Room2Services { get; set; }
-        
     }
 }

@@ -10,60 +10,62 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CoworkingApi.Controllers
 {
-    [Route("Admin")]
-    [ApiController]
-    public class AdminController : ControllerBase
+    [Produces("application/json")]
+    [Route("[controller]")]
+    public class UserController : ControllerBase
     {
-        private readonly IAdminService _adminService;
+        private readonly IUserService _userService;      
 
-        public AdminController(IAdminService adminService)
+        public UserController(IUserService userService)
         {
-            _adminService = adminService;
-
+            _userService = userService;           
         }
 
-
-          /// <summary>
-        /// Get admin
+        /// <summary>
+        /// Get User
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        [Produces("application/json", Type = typeof(AdminModel))]
+        [Produces("application/json", Type = typeof(UserModel))]
         public async Task<IActionResult> Get(int id)
-        {          
-            var admin = await _adminService.GetAdmin(id);
-            return Ok(admin);
-        }
-
-        // GET api/values
-        [HttpGet]
-        [Produces("application/json", Type = typeof(List<AdminModel>))]
-        public async Task<IActionResult> GetAll()
         {
-            var admin = await _adminService.GetAllAdmins();
+            var admin = await _userService.GetUser(id);
             return Ok(admin);
         }
 
         /// <summary>
-        /// Add a new Admin
+        /// Get all User
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Produces("application/json", Type = typeof(List<UserModel>))]
+        public async Task<IActionResult> GetAll()
+        {
+            var admin = await _userService.GetAllUsers();
+
+            return Ok(admin);
+        }
+
+        /// <summary>
+        /// Add a new User
         /// </summary>
         /// <param name="admin"></param>
         /// <returns>Admin</returns>
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
         [ProducesResponseType(401)]
-        [Produces("application/json",Type= typeof(AdminModel))]
+        [Produces("application/json", Type = typeof(UserModel))]
         [HttpPost]
-        public async Task<IActionResult> AddAdmin([FromBody]AdminModel admin)
+        public async Task<IActionResult> AddAdmin([FromBody]UserModel user)
         {
-            var name = await _adminService.AddAdmin(AdminMapper.Map(admin));
+            var name = await _userService.AddUser(UserMapper.Map(user));
 
             return Ok(name);
         }
 
         /// <summary>
-        /// Borra un admin
+        /// Borra un User
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -71,21 +73,21 @@ namespace CoworkingApi.Controllers
         [Produces("application/json", Type = typeof(bool))]
         public async Task<IActionResult> DeleteAdmin(int id)
         {
-            await _adminService.DeleteAdmin(id);
+            await _userService.DeleteUser(id);
 
             return Ok();
         }
 
         /// <summary>
-        /// Actualiza un Admin
+        /// Actualiza un User
         /// </summary>
         /// <param name="admin"></param>
         /// <returns></returns>
         [HttpPut]
-        [Produces("application/json", Type = typeof(AdminModel))]
-        public async Task<IActionResult> UpdateAdmin([FromBody]AdminModel admin)
+        [Produces("application/json", Type = typeof(UserModel))]
+        public async Task<IActionResult> UpdateAdmin([FromBody]UserModel admin)
         {
-            var name = await _adminService.UpdateAdmin(AdminMapper.Map(admin));
+            var name = await _userService.UpdateUser(UserMapper.Map(admin));
 
             return Ok(name);
         }

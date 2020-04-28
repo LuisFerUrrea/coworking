@@ -4,12 +4,203 @@
         <name>CoworkingApi</name>
     </assembly>
     <members>
+        <member name="M:CoworkingApi.Controllers.AdminController.Get(System.Int32)">
+            <summary>
+            Get admin
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:CoworkingApi.Controllers.AdminController.AddAdmin(CoworkingApi.ViewModels.AdminModel)">
             <summary>
-            Add new Admin
+            Add a new Admin
             </summary>
             <param name="admin"></param>
             <returns>Admin</returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.AdminController.DeleteAdmin(System.Int32)">
+            <summary>
+            Borra un admin
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.AdminController.UpdateAdmin(CoworkingApi.ViewModels.AdminModel)">
+            <summary>
+            Actualiza un Admin
+            </summary>
+            <param name="admin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.BookingController.Get(System.Int32)">
+            <summary>
+            Get Booking
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.BookingController.GetAll">
+            <summary>
+            Get all Booking
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.BookingController.AddBooking(CoworkingApi.ViewModels.BookingModel)">
+            <summary>
+            Add a new Booking
+            </summary>
+            <param name="admin"></param>
+            <returns>Admin</returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.BookingController.DeleteAdmin(System.Int32)">
+            <summary>
+            Borra un Booking
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.BookingController.UpdateAdmin(CoworkingApi.ViewModels.BookingModel)">
+            <summary>
+            Actualiza un Booking
+            </summary>
+            <param name="admin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.OfficesController.Get(System.Int32)">
+            <summary>
+            Get Office
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.OfficesController.GetAll">
+            <summary>
+            Get all Office
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.OfficesController.AddOffice(CoworkingApi.ViewModels.OfficeModel)">
+            <summary>
+            Add a new Office
+            </summary>
+            <param name="admin"></param>
+            <returns>Admin</returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.OfficesController.DeleteAdmin(System.Int32)">
+            <summary>
+            Borra un Office
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.OfficesController.UpdateAdmin(CoworkingApi.ViewModels.OfficeModel)">
+            <summary>
+            Actualiza un Office
+            </summary>
+            <param name="admin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.RoomController.Get(System.Int32)">
+            <summary>
+            Get Room
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.RoomController.GetAll">
+            <summary>
+            Get all Room
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.RoomController.AddRoom(CoworkingApi.ViewModels.RoomModel)">
+            <summary>
+            Add a new Room
+            </summary>
+            <param name="admin"></param>
+            <returns>Admin</returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.RoomController.DeleteAdmin(System.Int32)">
+            <summary>
+            Borra un Room
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.RoomController.UpdateAdmin(CoworkingApi.ViewModels.RoomModel)">
+            <summary>
+            Actualiza un Room
+            </summary>
+            <param name="admin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.ServiceController.Get(System.Int32)">
+            <summary>
+            Get service
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.ServiceController.GetAll">
+            <summary>
+            Get all services
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.ServiceController.AddAdmin(CoworkingApi.ViewModels.ServiceModel)">
+            <summary>
+            Add a new service
+            </summary>
+            <param name="admin"></param>
+            <returns>Admin</returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.ServiceController.DeleteAdmin(System.Int32)">
+            <summary>
+            Borra un service
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.ServiceController.UpdateAdmin(CoworkingApi.ViewModels.ServiceModel)">
+            <summary>
+            Actualiza un service
+            </summary>
+            <param name="admin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.UserController.Get(System.Int32)">
+            <summary>
+            Get User
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.UserController.GetAll">
+            <summary>
+            Get all User
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.UserController.AddAdmin(CoworkingApi.ViewModels.UserModel)">
+            <summary>
+            Add a new User
+            </summary>
+            <param name="admin"></param>
+            <returns>Admin</returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.UserController.DeleteAdmin(System.Int32)">
+            <summary>
+            Borra un User
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoworkingApi.Controllers.UserController.UpdateAdmin(CoworkingApi.ViewModels.UserModel)">
+            <summary>
+            Actualiza un User
+            </summary>
+            <param name="admin"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

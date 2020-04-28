@@ -2,20 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Coworking.Appi.DataAccess.Contracts.Entities
+namespace Coworking.Appi.Business.Models
 {
-    public class UserEntity
+    public class User
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
         public string Surname { get; set; }
         public string Email { get; set; }
         public bool Active { get; set; }
-
         public DateTime CreateDate { get; set; }
-
-        public virtual ICollection<BookingEntity> Booking { get; set; }
-
     }
 }

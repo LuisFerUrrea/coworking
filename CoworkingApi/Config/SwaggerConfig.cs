@@ -13,12 +13,12 @@ namespace CoworkingApi.Config
     {
         public static IServiceCollection AddRegistration(this IServiceCollection services)
         {
-            var basePath = System.AppDomain.CurrentDomain.BaseDirectory;
-            var xmlPath = Path.Combine(basePath,"CoworkingApi.xml");
+            //var basePath = System.AppDomain.CurrentDomain.BaseDirectory;
+            //var xmlPath = Path.Combine(basePath,"CoworkingApi.xml");
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Coworking API V1", Version = "v1" });
-                c.IncludeXmlComments(xmlPath);
+               // c.IncludeXmlComments(xmlPath);
 
             });
             return services;
@@ -33,11 +33,11 @@ namespace CoworkingApi.Config
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
-            //app.UseRouting();
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllers();
-            //});
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
 
             return app;
         }
