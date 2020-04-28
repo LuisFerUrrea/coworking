@@ -6,8 +6,8 @@ namespace Coworking.Appi.DataAccess.Contracts.Entities
 {
     public class Room2ServicesEntity
     {
-        public int IdRoom { get; set; }
-        public int IdService { get; set; }
+        public int RoomId { get; set; }
+        public int ServiceId { get; set; }
 
         public virtual RoomEntity Room { get; set; }
 

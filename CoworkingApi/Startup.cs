@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Coworking.Api.DataAccess;
 using Coworking.Appi.CrossCutting.Register;
 using Coworking.Appi.DataAccess.Contracts;
+using CoworkingApi.Config;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,9 +32,12 @@ namespace CoworkingApi
         {
             services.AddTransient<ICoworkingDBContext, CoworkingDBContext>();
             IoCRegister.AddRegistration(services);
+            SwaggerConfig.AddRegistration(services);
 
-            services.AddDbContext<CoworkingDBContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("DataBaseConnection")));
-            services.AddControllers();            
+           services.AddDbContext<CoworkingDBContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("DataBaseConnection")));
+            services.AddControllers();
+
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +47,8 @@ namespace CoworkingApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            SwaggerConfig.AddRegistration(app);
 
             app.UseHttpsRedirection();
 

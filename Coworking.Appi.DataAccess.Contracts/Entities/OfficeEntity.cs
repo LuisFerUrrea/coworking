@@ -13,7 +13,7 @@ namespace Coworking.Appi.DataAccess.Contracts.Entities
         public string City { get; set; }
         public bool Active { get; set; }
 
-        public int IdAdmin { get; set; }
+        public int? AdminId { get; set; }
 
         public bool HasIndividualWorkSpace { get; set; }
 
@@ -25,7 +25,7 @@ namespace Coworking.Appi.DataAccess.Contracts.Entities
 
         public virtual AdminEntity Admin { get; set; }
 
-        public virtual BookingEntity Booking { get; set; }
+        public virtual ICollection<BookingEntity> Booking { get; set; }
 
         public virtual ICollection<Officces2RoomsEntity> Office2Room { get; set; }
 

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Coworking.Appi.DataAccess.Contracts.Entities
+namespace CoworkingApi.ViewModels
 {
-    public class AdminEntity
+    public class AdminModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -12,8 +13,5 @@ namespace Coworking.Appi.DataAccess.Contracts.Entities
         public string Phone { get; set; }
 
         public string Email { get; set; }
-
-        public virtual ICollection<OfficeEntity> Office { get; set; }
-
     }
 }

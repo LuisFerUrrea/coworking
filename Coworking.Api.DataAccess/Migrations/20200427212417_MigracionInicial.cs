@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Coworking.Api.DataAccess.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class MigracionInicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -79,12 +79,11 @@ namespace Coworking.Api.DataAccess.Migrations
                     Phone = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
                     Active = table.Column<bool>(nullable: false),
-                    IdAdmin = table.Column<int>(nullable: false),
+                    AdminId = table.Column<int>(nullable: true),
                     HasIndividualWorkSpace = table.Column<bool>(nullable: false),
                     NumberWorkSpaces = table.Column<int>(nullable: false),
                     PriceWorkSpaceDaily = table.Column<decimal>(nullable: false),
-                    PriceWorkSpaceMonthly = table.Column<decimal>(nullable: false),
-                    AdminId = table.Column<int>(nullable: true)
+                    PriceWorkSpaceMonthly = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -101,21 +100,21 @@ namespace Coworking.Api.DataAccess.Migrations
                 name: "Room2Services",
                 columns: table => new
                 {
-                    IdRoom = table.Column<int>(nullable: false),
-                    IdService = table.Column<int>(nullable: false)
+                    RoomId = table.Column<int>(nullable: false),
+                    ServiceId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Room2Services", x => new { x.IdRoom, x.IdService });
+                    table.PrimaryKey("PK_Room2Services", x => new { x.RoomId, x.ServiceId });
                     table.ForeignKey(
-                        name: "FK_Room2Services_Rooms_IdRoom",
-                        column: x => x.IdRoom,
+                        name: "FK_Room2Services_Rooms_RoomId",
+                        column: x => x.RoomId,
                         principalTable: "Rooms",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Room2Services_Services_IdService",
-                        column: x => x.IdService,
+                        name: "FK_Room2Services_Services_ServiceId",
+                        column: x => x.ServiceId,
                         principalTable: "Services",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -178,14 +177,12 @@ namespace Coworking.Api.DataAccess.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Bookings_OfficeId",
                 table: "Bookings",
-                column: "OfficeId",
-                unique: true);
+                column: "OfficeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Bookings_UserId",
                 table: "Bookings",
-                column: "UserId",
-                unique: true);
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Officces2Room_RoomId",
@@ -198,9 +195,9 @@ namespace Coworking.Api.DataAccess.Migrations
                 column: "AdminId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Room2Services_IdService",
+                name: "IX_Room2Services_ServiceId",
                 table: "Room2Services",
-                column: "IdService");
+                column: "ServiceId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

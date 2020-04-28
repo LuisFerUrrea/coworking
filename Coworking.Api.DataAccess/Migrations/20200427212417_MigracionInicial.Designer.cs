@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Coworking.Api.DataAccess.Migrations
 {
     [DbContext(typeof(CoworkingDBContext))]
-    [Migration("20200425194028_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20200427212417_MigracionInicial")]
+    partial class MigracionInicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -69,11 +69,9 @@ namespace Coworking.Api.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OfficeId")
-                        .IsUnique();
+                    b.HasIndex("OfficeId");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
                     b.ToTable("Bookings");
                 });
@@ -115,9 +113,6 @@ namespace Coworking.Api.DataAccess.Migrations
                     b.Property<bool>("HasIndividualWorkSpace")
                         .HasColumnType("bit");
 
-                    b.Property<int>("IdAdmin")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -142,15 +137,15 @@ namespace Coworking.Api.DataAccess.Migrations
 
             modelBuilder.Entity("Coworking.Appi.DataAccess.Contracts.Entities.Room2ServicesEntity", b =>
                 {
-                    b.Property<int>("IdRoom")
+                    b.Property<int>("RoomId")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdService")
+                    b.Property<int>("ServiceId")
                         .HasColumnType("int");
 
-                    b.HasKey("IdRoom", "IdService");
+                    b.HasKey("RoomId", "ServiceId");
 
-                    b.HasIndex("IdService");
+                    b.HasIndex("ServiceId");
 
                     b.ToTable("Room2Services");
                 });
@@ -224,14 +219,14 @@ namespace Coworking.Api.DataAccess.Migrations
             modelBuilder.Entity("Coworking.Appi.DataAccess.Contracts.Entities.BookingEntity", b =>
                 {
                     b.HasOne("Coworking.Appi.DataAccess.Contracts.Entities.OfficeEntity", "Office")
-                        .WithOne("Booking")
-                        .HasForeignKey("Coworking.Appi.DataAccess.Contracts.Entities.BookingEntity", "OfficeId")
+                        .WithMany("Booking")
+                        .HasForeignKey("OfficeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Coworking.Appi.DataAccess.Contracts.Entities.UserEntity", "User")
-                        .WithOne("Booking")
-                        .HasForeignKey("Coworking.Appi.DataAccess.Contracts.Entities.BookingEntity", "UserId")
+                        .WithMany("Booking")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -254,7 +249,7 @@ namespace Coworking.Api.DataAccess.Migrations
             modelBuilder.Entity("Coworking.Appi.DataAccess.Contracts.Entities.OfficeEntity", b =>
                 {
                     b.HasOne("Coworking.Appi.DataAccess.Contracts.Entities.AdminEntity", "Admin")
-                        .WithMany()
+                        .WithMany("Office")
                         .HasForeignKey("AdminId");
                 });
 
@@ -262,13 +257,13 @@ namespace Coworking.Api.DataAccess.Migrations
                 {
                     b.HasOne("Coworking.Appi.DataAccess.Contracts.Entities.RoomEntity", "Room")
                         .WithMany("Room2Services")
-                        .HasForeignKey("IdRoom")
+                        .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Coworking.Appi.DataAccess.Contracts.Entities.ServiceEntity", "Service")
                         .WithMany("Room2Services")
-                        .HasForeignKey("IdService")
+                        .HasForeignKey("ServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -13,12 +13,12 @@ namespace Coworking.Api.DataAccess.EntityConfig
         {
             entityBuilder.ToTable("Room2Services");
 
-            entityBuilder.HasOne(x => x.Room).WithMany(x => x.Room2Services).HasForeignKey(x => x.IdRoom);
-            entityBuilder.HasOne(x => x.Service).WithMany(x => x.Room2Services).HasForeignKey(x => x.IdService);
+            entityBuilder.HasOne(x => x.Room).WithMany(x => x.Room2Services).HasForeignKey(x => x.RoomId);
+            entityBuilder.HasOne(x => x.Service).WithMany(x => x.Room2Services).HasForeignKey(x => x.ServiceId);
 
-            entityBuilder.HasKey(x => new { x.IdRoom, x.IdService });
-            entityBuilder.Property(x => x.IdRoom).IsRequired();
-            entityBuilder.Property(x => x.IdService).IsRequired();
+            entityBuilder.HasKey(x => new { x.RoomId, x.ServiceId });
+            entityBuilder.Property(x => x.RoomId).IsRequired();
+            entityBuilder.Property(x => x.ServiceId).IsRequired();
 
         }
 

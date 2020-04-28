@@ -15,7 +15,7 @@ namespace Coworking.Appi.DataAccess.Contracts.Entities
 
         public DateTime CreateDate { get; set; }
 
-        public virtual BookingEntity Booking { get; set; }
+        public virtual ICollection<BookingEntity> Booking { get; set; }
 
     }
 }
