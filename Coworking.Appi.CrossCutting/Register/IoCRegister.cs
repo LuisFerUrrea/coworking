@@ -1,4 +1,7 @@
 ﻿using Coworking.Api.DataAccess.Repositories;
+using Coworking.Appi.Application.ApiCaller;
+using Coworking.Appi.Application.Configuration;
+using Coworking.Appi.Application.Contracts.ApiCaller;
 using Coworking.Appi.Application.Contracts.Services;
 using Coworking.Appi.Application.Services;
 using Coworking.Appi.DataAccess.Contracts.Repositories;
@@ -15,6 +18,7 @@ namespace Coworking.Appi.CrossCutting.Register
         {
             AddRegisterServices(services);
             AddRegisterRepositories(services);
+            AddRegisterOthers(services);
             return services;
         }
 
@@ -38,6 +42,13 @@ namespace Coworking.Appi.CrossCutting.Register
             services.AddTransient<IRoomRepository, RoomRepository>();
             services.AddTransient<IServicesRepository, ServicesRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
+            return services;
+        }
+
+        private static IServiceCollection AddRegisterOthers(IServiceCollection services)
+        {
+            services.AddTransient<IAppConfig, AppConfig>();
+            services.AddTransient<IApiCaller, ApiCaller>();
             return services;
         }
 

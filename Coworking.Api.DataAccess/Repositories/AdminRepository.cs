@@ -45,6 +45,7 @@ namespace Coworking.Api.DataAccess.Repositories
 
         public async Task<AdminEntity> Add(AdminEntity entity)
         {
+            //throw new Exception("error prueba");
 
             await _coworkingDBContext.Admins.AddAsync(entity);
 

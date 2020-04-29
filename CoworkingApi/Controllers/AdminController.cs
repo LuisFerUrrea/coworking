@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Coworking.Appi.Application.Configuration;
 using Coworking.Appi.Application.Contracts.Services;
 using CoworkingApi.Mappers;
 using CoworkingApi.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Polly;
 
 namespace CoworkingApi.Controllers
 {
@@ -15,11 +18,14 @@ namespace CoworkingApi.Controllers
     public class AdminController : ControllerBase
     {
         private readonly IAdminService _adminService;
+        private readonly IAppConfig _config;
+        private readonly IConfiguration _conf;
 
-        public AdminController(IAdminService adminService)
+        public AdminController(IAdminService adminService,IAppConfig config, IConfiguration conf)
         {
             _adminService = adminService;
-
+            _config = config;
+            _conf = conf;
         }
 
 
@@ -31,7 +37,8 @@ namespace CoworkingApi.Controllers
         [HttpGet("{id}")]
         [Produces("application/json", Type = typeof(AdminModel))]
         public async Task<IActionResult> Get(int id)
-        {          
+        {
+            var seconds = _config.ServiceUrl;
             var admin = await _adminService.GetAdmin(id);
             return Ok(admin);
         }
@@ -57,8 +64,17 @@ namespace CoworkingApi.Controllers
         [HttpPost]
         public async Task<IActionResult> AddAdmin([FromBody]AdminModel admin)
         {
-            var name = await _adminService.AddAdmin(AdminMapper.Map(admin));
+            //var maxTrys = _config.MaxTrys;
+            //var timeToWait = TimeSpan.FromSeconds(_config.SecondsToWait);
 
+            //var retryPolity = Policy.Handle<Exception>().WaitAndRetryAsync(maxTrys, i => timeToWait);
+
+            //return await retryPolity.ExecuteAsync(async()=>{
+            //    var name = await _adminService.AddAdmin(AdminMapper.Map(admin));
+            //    return Ok(name);
+            //});
+
+            var name = await _adminService.AddAdmin(AdminMapper.Map(admin));
             return Ok(name);
         }
 

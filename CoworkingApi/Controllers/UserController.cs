@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Coworking.Appi.Application.Contracts.ApiCaller;
 using Coworking.Appi.Application.Contracts.Services;
+using Coworking.Appi.Business.Models;
 using CoworkingApi.Mappers;
 using CoworkingApi.ViewModels;
 using Microsoft.AspNetCore.Http;
@@ -14,11 +16,13 @@ namespace CoworkingApi.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly IUserService _userService;      
+        private readonly IUserService _userService;
+        private readonly IApiCaller _apiCaller;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService,IApiCaller apiCaller)
         {
-            _userService = userService;           
+            _userService = userService;
+            _apiCaller = apiCaller;
         }
 
         /// <summary>
@@ -30,6 +34,9 @@ namespace CoworkingApi.Controllers
         [Produces("application/json", Type = typeof(UserModel))]
         public async Task<IActionResult> Get(int id)
         {
+            //Ejemplo de uso del API Caller
+            var response = _apiCaller.GetServiceResponseById<Admin>("Admin", 1);
+
             var admin = await _userService.GetUser(id);
             return Ok(admin);
         }
